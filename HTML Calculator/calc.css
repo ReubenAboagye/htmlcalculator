@@ -1,0 +1,95 @@
+
+    body {
+  user-select: none;
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 4px;
+  background-color: rgb(255, 0, 0);
+  padding: 4px;
+  border-radius: 5px;
+  max-width: 360px;
+  font-family: "Tahoma";
+  margin: auto;
+}
+.log {
+  background: #ccc;
+  border-radius: 5px;
+  max-width: 360px;
+
+  font-family: "Tahoma";
+  margin: auto;
+  cursor: pointer;
+}
+.log p{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+}
+.log ul{
+    list-style-type: none;
+    float: left;
+    font-weight: bold;
+}
+.log ul li{
+    border: 1px solid #000;
+    width: 300px;
+    margin: 1.5px;
+    padding: 1px 3px;
+}
+.item {
+  background-color: #ffc222;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  cursor: pointer;
+}
+.item:hover {
+  background-color: #D90;
+}
+form {
+  max-width: 100%;
+}
+input {
+  width: 100%;
+  height: 60px;
+  border: none;
+  font-size: 30px;
+  outline: none;
+  text-align: right;
+}
+.input {
+  grid-column: 1/-1;
+  padding: 0;
+}
+.clean {
+  grid-column: 1/3;
+  background-color: #000;
+  color: #fff;
+}
+.history{
+    grid-column: 1/-1;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+.history:hover,.clean:hover, .equal:hover {
+  background-color: rgb(36, 35, 35);
+}
+.back {
+  grid-column: 3/-1;
+}
+.equal {
+  grid-column: 4;
+  grid-row: 6/8;
+  background-color: #000;
+  color: #fff;
+}
+.zero {
+  grid-column: 1/3;
+}

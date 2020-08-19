@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Calculator</title>
+        <link rel="stylesheet" href="calc.css">
+    </head>
+    <body>
+        <div class="container">
+      <div class="item input">
+        <form name="form">
+          <input type="text" name="textview" >
+        </form>
+      </div>
+      <div class="item clean" onclick="clean()">C</div>
+      <div class="item back" onclick="back()">&larr;</div>
+      <div class="item" onclick="insert('+')">+</div>
+      <div class="item" onclick="insert('-')">-</div>
+      <div class="item" onclick="insert('*')">&times;</div>
+      <div class="item" onclick="insert('/')">&divide;</div>
+      <div class="item" onclick="insert('7')">7</div>
+      <div class="item" onclick="insert('8')">8</div>
+      <div class="item" onclick="insert('9')">9</div>
+      <div class="item" onclick="insert('(')">(</div>
+      <div class="item" onclick="insert('4')">4</div>
+      <div class="item" onclick="insert('5')">5</div>
+      <div class="item" onclick="insert('6')">6</div>
+      <div class="item" onclick="insert(')')">)</div>
+      <div class="item" onclick="insert('1')">1</div>
+      <div class="item" onclick="insert('2')">2</div>
+      <div class="item" onclick="insert('3')">3</div>
+      <div class="item equal" onclick="equal()">=</div>
+      <div class="item zero" onclick="insert('0')">0</div>
+      <div class="item" onclick="insert('.')">.</div>
+      <button class="item history" onclick="showHistory(logg)">History</button>
+    </div>
+    <div class="log" id="log">
+        <button onclick="clearHistory()">Empty History</button>
+    </div>
+    </body>
+</html>
+
+<!-- Css -->
+<!--Linked to css file-->
+<!-- Js -->
+<script>
+    var logg = []
+    
+    var answer, logList;
+    function insert(num) {
+  document.form.textview.value = document.form.textview.value + num;
+}
+
+function clean() {
+  document.form.textview.value = "";
+  history = []
+}
+function back() {
+  let exp =  document.form.textview.value;
+  document.form.textview.value = exp.substring(0,exp.length-1);
+}
+
+function equal() {
+  let exp =  document.form.textview.value;
+  if(exp) {
+    answer = eval(exp);
+    document.form.textview.value = answer;
+
+    // storing history
+    var his = exp + " = "+ answer;
+    logg.push(his);
+    // console.log(logg);
+  }
+  buildLog(logg)
+}
+function buildLog(myArray){
+  logList = document.createElement("ul")
+  for(var i = 0; i< myArray.length; i++){
+    let li = document.createElement("li");
+    li.innerText = myArray[i];
+    logList.appendChild(li)
+  }
+}
+function showHistory(myArray){
+    var div = document.getElementById("log");
+    var error = document.createElement("p")
+    div.style.padding = "2px"
+    div.style.marginTop = "1px"
+    if(myArray.length > 0){
+        div.appendChild(logList);
+    }else{
+        error.innerText = "History Log is Empty"
+        div.appendChild(error)
+    }
+}
+function clearHistory(){
+    document.getElementById("log").innerHTML = ""
+}
+</script>
